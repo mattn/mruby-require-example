@@ -10,10 +10,12 @@
 #include <mruby.h>
 #include <mruby/string.h>
 
-#ifdef _WIN32
-#define EXPORT __declspec(dllexport)
-#else
-#define EXPORT
+#ifndef MRB_EXPORT
+# ifdef _WIN32
+#  define MRB_EXPORT __declspec(dllexport)
+# else
+#  define MRB_EXPORT
+# endif
 #endif
 
 /*
